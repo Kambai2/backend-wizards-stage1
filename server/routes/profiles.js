@@ -29,14 +29,16 @@ router.post('/', async (req, res) => {
         data: result.profile
       });
     }
-  } catch (error) {
-    console.error('Error in POST /api/profiles:', error);
-    if (error.message.includes('returned an invalid response')) {
-      return res.status(502).json({ status: 'error', message: error.message });
-    }
-    return res.status(500).json({ status: 'error', message: 'Internal server error' });
-  }
-});
+ } catch (error) {
+ console.error('Error in POST /api/profiles:', error);
+ if (error.message.includes('returned an invalid response')) {
+ return res.status(400).json({ status: 'error', message: error.message });
+ }
+ if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+ return res.status(503).json({ status: 'error', message: 'External service unavailable' });
+ }
+ return res.status(500).json({ status: 'error', message: 'Internal server error' });
+ });
 
 // GET /api/profiles/:id
 router.get('/:id', async (req, res) => {
