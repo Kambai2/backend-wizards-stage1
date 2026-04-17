@@ -1,0 +1,23 @@
+{
+  "name": "backend-wizards-stage1",
+  "version": "1.0.0",
+  "description": "Backend Wizards Stage 1 - Data Persistence & API Design",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.20",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "node-fetch": "^3.3.2",
+    "uuid": "^13.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
